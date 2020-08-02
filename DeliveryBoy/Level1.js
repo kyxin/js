@@ -10,9 +10,9 @@ class Level1 extends Phaser.Scene {
     this.load.spritesheet('tiles', 'assets/tileset32x32-20.png', {frameWidth: 32, frameHeight: 32});
 
     // small res map 
-    this.worldmap.setTileIndexCallback(11, this.resMap01, this);
-    this.worldmap.setTileIndexCallback(12, this.resMap02, this);
-    this.worldmap.setTileIndexCallback(14, this.resMap03, this);
+    // this.worldmap.setTileIndexCallback(11, this.resMap01, this);
+    // this.worldmap.setTileIndexCallback(12, this.resMap02, this);
+    // this.worldmap.setTileIndexCallback(14, this.resMap03, this);
 
 
     // player animations
