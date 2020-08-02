@@ -1,9 +1,9 @@
 
-class levelPass extends Phaser.Scene {
+class endScene extends Phaser.Scene {
 
     constructor ()
     {
-        super({ key: 'levelPass' });
+        super({ key: 'endScene' });
     }
 
     preload() {

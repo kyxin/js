@@ -9,6 +9,12 @@ class Level1 extends Phaser.Scene {
     var map =  this.load.tilemapTiledJSON('map', 'assets/map01.json');
     this.load.spritesheet('tiles', 'assets/tileset32x32-20.png', {frameWidth: 32, frameHeight: 32});
 
+    // small res map 
+    this.worldmap.setTileIndexCallback(11, this.resMap01, this);
+    this.worldmap.setTileIndexCallback(12, this.resMap02, this);
+    this.worldmap.setTileIndexCallback(14, this.resMap03, this);
+
+
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
     // enemy animations
@@ -24,7 +30,7 @@ class Level1 extends Phaser.Scene {
  create () {
     var map = this.make.tilemap({key: 'map'});
     
-    // tiles64x64 is name inside Tiled
+    // tiles32x32 is name inside Tiled
     var Tiles = map.addTilesetImage('tileset32x32-20','tiles');
     
     // groundLayer & platformLayer from Tiled
@@ -45,12 +51,16 @@ class Level1 extends Phaser.Scene {
 
 
     // tween
-    this.time.addEvent({ delay: 1000, callback: this.moveRightLeft, callbackScope: this, loop: false });
-    this.time.addEvent({ delay: 2000, callback: this.moveDownUp, callbackScope: this, loop: false });
+    this.time.addEvent({ delay: 0, callback: this.moveRightLeft, callbackScope: this, loop: false });
+    this.time.addEvent({ delay: 1000, callback: this.moveRightLeft2, callbackScope: this, loop: false });
+    this.time.addEvent({ delay: 0, callback: this.moveDownUp, callbackScope: this, loop: false });
+    this.time.addEvent({ delay: 2000, callback: this.moveDownUp2, callbackScope: this, loop: false });
+    this.time.addEvent({ delay: 1000, callback: this.moveDownUp3, callbackScope: this, loop: false });
     
+    //star and end point 
     var start = map.findObject("object_layer", obj => obj.name === "start");
     this.end = map.findObject("object_layer", obj => obj.name === "end");
-    // console.log(this.end.x,this.end.y)
+    console.log(this.end.x,this.end.y)
     
      // create the player sprite
      this.player = this.physics.add.sprite(start.x, start.y, 'player').setScale(0.2);
@@ -129,7 +139,7 @@ class Level1 extends Phaser.Scene {
                     repeat: -1
                     });
     // create the enemy sprite
-    this.dog = this.physics.add.sprite(450, 700, 'dog').setScale(0.2).play('dogAnim');
+    this.dog1 = this.physics.add.sprite(450, 700, 'dog').setScale(0.2).play('dogAnim');
     this.dog2 = this.physics.add.sprite(480,220, 'dog').setScale(0.2).play('dogAnim');
     this.obstacle = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.2);
     this.obstacle2 = this.physics.add.sprite(800, 700, 'obstacle').setScale(0.2);
@@ -189,7 +199,6 @@ class Level1 extends Phaser.Scene {
         this.time.delayedCall(1000,function() {
             this.bgmusicSnd.loop = false;
             this.bgmusicSnd.stop(); 
-            this.scene.stop("level1");
             this.scene.start("endScene");
         },[], this);
     }
@@ -199,16 +208,16 @@ class Level1 extends Phaser.Scene {
         moveRightLeft(){
         console.log('moveRightLeft')
         this.tweens.timeline({
-            targets: this.dog,
+            targets: this.dog1,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 3000,
+            duration: 2000,
             tweens: [
             {
                 x: 450,
             },
             {
-                x: 450,
+                x: 550,
             },
             {
                 x: 450,
@@ -216,8 +225,8 @@ class Level1 extends Phaser.Scene {
         ]
         }); 
     }
-    moveRightLeft(){
-        console.log('moveRightLeft')
+    moveRightLeft2(){
+        console.log('moveRightLeft2')
         this.tweens.timeline({
             targets: this.dog2,
             loop: -1, // loop forever
@@ -242,7 +251,7 @@ class Level1 extends Phaser.Scene {
             targets: this.obstacle,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 3000,
+            duration: 2000,
             tweens: [
             {
                 y: 350,
@@ -256,13 +265,13 @@ class Level1 extends Phaser.Scene {
         ]
         }); 
     }
-    moveDownUp(){
-        console.log('moveDownUp')
+    moveDownUp2(){
+        console.log('moveDownUp2')
         this.tweens.timeline({
             targets: this.obstacle2,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 3000,
+            duration: 2000,
             tweens: [
             {
                 y: 700,
@@ -277,13 +286,13 @@ class Level1 extends Phaser.Scene {
         }); 
     }
 
-    moveDownUp(){
-        console.log('moveDownUp')
+    moveDownUp3(){
+        console.log('moveDownUp3')
         this.tweens.timeline({
             targets: this.obstacle3,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 3000,
+            duration: 2000,
             tweens: [
             {
                 y: 220,
