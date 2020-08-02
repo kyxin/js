@@ -78,6 +78,12 @@ class Level1 extends Phaser.Scene {
     this.physics.add.collider(this.player,this.houseLayer);
     this.physics.add.collider(this.player,this.shopLayer);
     this.physics.add.collider(this.player,this.treeLayer);
+    
+    // create enemy physic group
+    this.dog1 = this.physics.add.group();
+
+    // hit dog
+    this.physics.add.collider(this.player, this.dog1, this.hitdog1, null, this);
 
     this.anims.create({
         key:'run',
@@ -156,7 +162,22 @@ class Level1 extends Phaser.Scene {
     
         // set background color, so the sky is not black
         this.cameras.main.setBackgroundColor('#ccccff');
+
+        hitdog1(player,dog)
+            dog1.disableBody(true, true);
+            console.log('Hit dog1, restart game');
+            // delay 1 sec  
+            this.bgmusicSnd.loop = false
+            this.bgmusicSnd.stop();
+            this.failSoundSnd.play();          
+            this.time.delayedCall(500,function() {
+            this.scene.start("failScene");
+               
+            },[], this);
+            
     }
+
+    // end of create
     
      update() {
     
