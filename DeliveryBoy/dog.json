@@ -1,0 +1,111 @@
+{
+  "frames": {
+    "dog_01": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 164,
+        "h": 139
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 7,
+        "w": 164,
+        "h": 139
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 147
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "dog_03": {
+      "frame": {
+        "x": 164,
+        "y": 0,
+        "w": 163,
+        "h": 139
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 7,
+        "w": 163,
+        "h": 139
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 147
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "dog_02": {
+      "frame": {
+        "x": 327,
+        "y": 0,
+        "w": 141,
+        "h": 141
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 5,
+        "w": 141,
+        "h": 141
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 147
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "dog_04": {
+      "frame": {
+        "x": 0,
+        "y": 139,
+        "w": 141,
+        "h": 141
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 4,
+        "w": 141,
+        "h": 141
+      },
+      "sourceSize": {
+        "w": 168,
+        "h": 146
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.6",
+    "image": "dog.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 468,
+      "h": 280
+    },
+    "scale": 1
+  }
+}
