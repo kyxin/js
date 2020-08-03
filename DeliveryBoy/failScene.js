@@ -20,7 +20,11 @@ class failScene extends Phaser.Scene {
         
         spaceDown.on('down', function(){
         console.log("Spacebar pressed, goto introScene");
-        this.scene.start("Level1");
+        var player = {
+            x:500,
+            y:936
+        }
+        this.scene.start("Level1", { player : player });
         }, this );
 
     }

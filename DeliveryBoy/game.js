@@ -14,8 +14,7 @@ let config = {
             debug: true
         }
     },
-    // scene: [IntroScene,StoryScene1, StoryScene2, Instruction1, Instruction2, Level1, resMap01, resMap02, resMap03]
-    scene: [IntroScene, StoryScene1,Instruction1, Instruction2,Level1,endScene,failScene]
+    scene: [IntroScene, StoryScene1,Instruction1, Instruction2,Level1,endScene,failScene,shop1Scene,shop2Scene,shop3Scene]
 
 
 };

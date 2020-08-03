@@ -19,9 +19,12 @@ class IntroScene extends Phaser.Scene {
         var key1 = this.input.keyboard.addKey(49);
 
         key1.on('down', function(){
-            this.scene.start("level1");
             console.log("key1 pressed, goto Level1");
-            this.scene.start("Level1");
+            var player = {
+                x:500,
+                y:936
+            }
+            this.scene.start("Level1", { player : player });
             }, this );
         
         spaceDown.on('down', function(){

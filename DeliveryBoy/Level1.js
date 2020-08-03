@@ -5,14 +5,13 @@ class Level1 extends Phaser.Scene {
         super({ key: 'Level1' });
     }
 
+    init(data){
+        this.player = data.player
+    }
+
  preload () {
     var map =  this.load.tilemapTiledJSON('map', 'assets/map01.json');
     this.load.spritesheet('tiles', 'assets/tileset32x32-20.png', {frameWidth: 32, frameHeight: 32});
-
-    // small res map 
-    // this.worldmap.setTileIndexCallback(11, this.resMap01, this);
-    // this.worldmap.setTileIndexCallback(12, this.resMap02, this);
-    // this.worldmap.setTileIndexCallback(14, this.resMap03, this);
 
 
     // player animations
@@ -21,10 +20,11 @@ class Level1 extends Phaser.Scene {
     this.load.atlas('dog','assets/dog.png','assets/dog.json');
     this.load.spritesheet('obstacle','assets/obstacle.png',{frameWidth: 106, frameHeight: 128});
 
-    // music
+    // // music
     this.load.audio('bgmusic','assets/gameBGM.mp3')
     this.load.audio('collectSound','assets/collectSound.mp3')
     this.load.audio('failSound','assets/failSound.mp3')
+    
 } 
 
  create () {
@@ -45,9 +45,11 @@ class Level1 extends Phaser.Scene {
     this.houseLayer.setCollisionByProperty({ house:true });
 
     // music
-    this.bgmusicSnd = this.sound.add('bgmusic');
-    this.bgmusicSnd.play();
-    this.bgmusicSnd.loop = true;
+    // this.bgmusicSnd = this.sound.add('bgmusic');
+    // this.bgmusicSnd.play();
+    // this.bgmusicSnd.loop = true;
+    this.failSoundSnd = this.sound.add('failSound');
+    this.collectSoundSnd = this.sound.add('collectSound');
 
 
     // tween
@@ -58,33 +60,21 @@ class Level1 extends Phaser.Scene {
     this.time.addEvent({ delay: 1000, callback: this.moveDownUp3, callbackScope: this, loop: false });
     
     //star and end point 
-    var start = map.findObject("object_layer", obj => obj.name === "start");
-    this.end = map.findObject("object_layer", obj => obj.name === "end");
-    console.log(this.end.x,this.end.y)
+    // var start = map.findObject("object_layer", obj => obj.name === "start");
+    // this.end = map.findObject("object_layer", obj => obj.name === "end");
+    // console.log(this.end.x,this.end.y)
     
      // create the player sprite
-     this.player = this.physics.add.sprite(start.x, start.y, 'player').setScale(0.2);
+     this.player = this.physics.add.sprite(this.player.x, this.player.y, 'player').setScale(0.2);
      // small fix to our player images, we resize the physics body object slightly
      this.player.body.setSize(this.player.width, this.player.height);
+     window.player= this.player
      
      
      this.physics.world.bounds.width = this.groundLayer.width;
      this.physics.world.bounds.height = this.groundLayer.height;
 
-    // this.player.setBounce(0.5);
-    this.player.setCollideWorldBounds(true);
-
-    this.physics.add.collider(this.player,this.groundLayer);
-    this.physics.add.collider(this.player,this.houseLayer);
-    this.physics.add.collider(this.player,this.shopLayer);
-    this.physics.add.collider(this.player,this.treeLayer);
     
-    // create enemy physic group
-    this.dog1 = this.physics.add.group();
-
-    // hit dog
-    this.physics.add.collider(this.player, this.dog1, this.hitdog1, null, this);
-
     this.anims.create({
         key:'run',
         frames:[
@@ -147,12 +137,71 @@ class Level1 extends Phaser.Scene {
     // create the enemy sprite
     this.dog1 = this.physics.add.sprite(450, 700, 'dog').setScale(0.2).play('dogAnim');
     this.dog2 = this.physics.add.sprite(480,220, 'dog').setScale(0.2).play('dogAnim');
-    this.obstacle = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.2);
+    this.obstacle1 = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.2);
     this.obstacle2 = this.physics.add.sprite(800, 700, 'obstacle').setScale(0.2);
     this.obstacle3 = this.physics.add.sprite(700, 220, 'obstacle').setScale(0.2);
   
+    // this.player.setBounce(0.5);
+    this.player.setCollideWorldBounds(true);
 
-        this.cursors = this.input.keyboard.createCursorKeys();
+    this.physics.add.collider(this.player,this.groundLayer);
+    this.physics.add.collider(this.player,this.houseLayer);
+    this.physics.add.collider(this.player,this.shopLayer);
+    this.physics.add.collider(this.player,this.treeLayer);
+    
+
+    // hit dog
+    this.physics.add.collider(this.player, this.dog1, this.hitdog1, null, this);
+    this.physics.add.collider(this.player, this.dog2, this.hitdog1, null, this);
+
+    // hit obstacle
+    this.physics.add.collider(this.player, this.obstacle1, this.hitobstacle1, null, this);
+    this.physics.add.collider(this.player, this.obstacle2, this.hitobstacle1, null, this);
+    this.physics.add.collider(this.player, this.obstacle3, this.hitobstacle1, null, this);
+
+    // jump into small map (resMap01)
+    this.shopLayer.setTileIndexCallback(71, this.shop1, this);
+    this.shopLayer.setTileIndexCallback(72, this.shop1, this);
+    this.shopLayer.setTileIndexCallback(73, this.shop1, this);
+    this.physics.add.collider(this.shopLayer, this.player);
+    // reach house get point (resMap01)
+    this.houseLayer.setTileIndexCallback(50, this.house1, this);
+    this.houseLayer.setTileIndexCallback(51, this.house1, this);
+    this.houseLayer.setTileIndexCallback(52, this.house1, this);
+    this.houseLayer.setTileIndexCallback(58, this.house1, this);
+    this.houseLayer.setTileIndexCallback(59, this.house1, this);
+    this.houseLayer.setTileIndexCallback(60, this.house1, this);
+    this.physics.add.collider(this.houseLayer, this.player);
+
+     // jump into small map (resMap02)
+     this.shopLayer.setTileIndexCallback(66, this.shop2, this);
+     this.shopLayer.setTileIndexCallback(67, this.shop2, this);
+     this.shopLayer.setTileIndexCallback(68, this.shop2, this);
+     this.physics.add.collider(this.shopLayer, this.player);
+     // reach house get point (resMap02)
+     this.houseLayer.setTileIndexCallback(37, this.house2, this);
+     this.houseLayer.setTileIndexCallback(38, this.house2, this);
+     this.houseLayer.setTileIndexCallback(45, this.house2, this);
+     this.houseLayer.setTileIndexCallback(46, this.house2, this);
+     this.physics.add.collider(this.houseLayer, this.player);
+
+     // jump into small map (resMap03)
+     this.shopLayer.setTileIndexCallback(90, this.shop3, this);
+     this.shopLayer.setTileIndexCallback(91, this.shop3, this);
+     this.shopLayer.setTileIndexCallback(92, this.shop3, this);
+     this.physics.add.collider(this.shopLayer, this.player);
+     // reach house get point (resMap03)
+     this.houseLayer.setTileIndexCallback(61, this.house3, this);
+     this.houseLayer.setTileIndexCallback(62, this.house3, this);
+     this.houseLayer.setTileIndexCallback(53, this.house3, this);
+     this.houseLayer.setTileIndexCallback(54, this.house3, this);
+     this.physics.add.collider(this.houseLayer, this.player);
+
+       
+    
+    
+    
+    this.cursors = this.input.keyboard.createCursorKeys();
     
         // set bounds so the camera won't go outside the game world
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -163,17 +212,7 @@ class Level1 extends Phaser.Scene {
         // set background color, so the sky is not black
         this.cameras.main.setBackgroundColor('#ccccff');
 
-        hitdog1(player,dog)
-            dog1.disableBody(true, true);
-            console.log('Hit dog1, restart game');
-            // delay 1 sec  
-            this.bgmusicSnd.loop = false
-            this.bgmusicSnd.stop();
-            this.failSoundSnd.play();          
-            this.time.delayedCall(500,function() {
-            this.scene.start("failScene");
-               
-            },[], this);
+        
             
     }
 
@@ -218,8 +257,8 @@ class Level1 extends Phaser.Scene {
         console.log('Reached End, game over');
         //this.cameras.main.shake(500);
         this.time.delayedCall(1000,function() {
-            this.bgmusicSnd.loop = false;
-            this.bgmusicSnd.stop(); 
+            // this.bgmusicSnd.loop = false;
+            // this.bgmusicSnd.stop(); 
             this.scene.start("endScene");
         },[], this);
     }
@@ -269,7 +308,7 @@ class Level1 extends Phaser.Scene {
     moveDownUp(){
         console.log('moveDownUp')
         this.tweens.timeline({
-            targets: this.obstacle,
+            targets: this.obstacle1,
             loop: -1, // loop forever
             ease: 'Linear',
             duration: 2000,
@@ -328,5 +367,68 @@ class Level1 extends Phaser.Scene {
         }); 
     }
 
+//    hit dog
+    hitdog1(player,dog){
+            dog.disableBody(true, true);
+            console.log('Hit dog1, restart game');
+            // delay 1 sec  
+            // this.bgmusicSnd.loop = false
+            // this.bgmusicSnd.stop();
+            this.failSoundSnd.play();          
+            this.time.delayedCall(500,function() {
+            this.scene.start("failScene");
+               
+            },[], this);
         }
+// hit obstacle
+        hitobstacle1(player,obstacle){
+            obstacle.disableBody(true, true);
+            console.log('Hit dog1, restart game');
+            // delay 1 sec  
+            // this.bgmusicSnd.loop = false
+            // this.bgmusicSnd.stop();
+            this.failSoundSnd.play();          
+            this.time.delayedCall(500,function() {
+            this.scene.start("failScene");
+               
+            },[], this);
+        }
+
+        // small map function (shop01)
+        shop1(player,tile) {
+            console.log('shop: ',tile.index)
+            this.scene.start('shop1Scene', { player : player });
+        }
+
+         // small map function (shop02)
+         shop2(player,tile) {
+            console.log('shop: ',tile.index)
+            this.scene.start('shop2Scene', { player : player });
+        }
+
+        // small map function (shop03)
+        shop3(player,tile) {
+            console.log('shop: ',tile.index)
+            this.scene.start('shop3Scene', { player : player });
+        }
+
+        // hit house get point (house1)
+        house1 (player,tile){
+        console.log('house1',tile.index)
+        
+         }
+
+         // hit house get point (house2)
+        house2 (player,tile){
+        console.log('house2',tile.index)
+
+        }
+
+        // hit house get point (house3)
+        house3 (player,tile){
+            console.log('house3',tile.index)
+         }
+
+
+}
         // end of the scene
