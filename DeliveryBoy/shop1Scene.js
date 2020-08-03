@@ -29,7 +29,6 @@ class shop1Scene extends Phaser.Scene {
     this.chicken = this.physics.add.sprite(50, 300, 'chicken').setScale(0.3);
 
     
-
     // set collider
     this.tableLayer.setCollisionByProperty({ table:true });
     this.tableLayer.setCollisionByProperty({ wareboard:true });
@@ -55,6 +54,11 @@ class shop1Scene extends Phaser.Scene {
      
      this.physics.world.bounds.width = this.groundLayer.width;
      this.physics.world.bounds.height = this.groundLayer.height;
+
+     // collect action
+    this.physics.add.overlap(this.player, this.chicken,this.holdchicken, null, this );
+
+
 
     
     this.anims.create({
@@ -182,6 +186,16 @@ class shop1Scene extends Phaser.Scene {
     }
         } 
         // end of update 
+
+        holdChicken(player,chicken) {
+            console.log('Collect chicken');
+            this.chicken.x = this.player.x+32
+            this.chicken.y = this.player.y
+            this.holdchicken=1
+            return false;
+        }
+    
+        
 
         }
         // end of the scene
