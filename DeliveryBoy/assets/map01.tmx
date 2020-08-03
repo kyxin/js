@@ -27,147 +27,147 @@
   </tile>
   <tile id="38">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="39">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="46">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="47">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="51">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="52">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="53">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="54">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="55">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="59">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="60">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="61">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="62">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="63">
    <properties>
-    <property name="house" type="bool" value="true"/>
+    <property name="house3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="67">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="68">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="69">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="72">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="73">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="74">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="75">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="76">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="77">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop2" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="80">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="81">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="82">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop1" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="83">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="84">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="85">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="88">
@@ -187,17 +187,17 @@
   </tile>
   <tile id="91">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="92">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="93">
    <properties>
-    <property name="shop" type="bool" value="true"/>
+    <property name="shop3" type="bool" value="true"/>
    </properties>
   </tile>
  </tileset>
