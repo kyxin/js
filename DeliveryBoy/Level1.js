@@ -187,8 +187,6 @@ class Level1 extends Phaser.Scene {
     
 
     // reach house get point (resMap01)
-    this.houseLayer.setTileIndexCallback(58, this.house1, this);
-    this.houseLayer.setTileIndexCallback(59, this.house1, this);
     this.houseLayer.setTileIndexCallback(60, this.house1, this);
 
      // jump into small map (resMap02)
@@ -197,8 +195,7 @@ class Level1 extends Phaser.Scene {
      this.shopLayer.setTileIndexCallback(68, this.shop2, this);
      
      // reach house get point (resMap02)
-     this.houseLayer.setTileIndexCallback(45, this.house2, this);
-     this.houseLayer.setTileIndexCallback(46, this.house2, this);
+     this.houseLayer.setTileIndexCallback(47, this.house2, this);
 
 
      // jump into small map (resMap03)
@@ -207,8 +204,7 @@ class Level1 extends Phaser.Scene {
      this.shopLayer.setTileIndexCallback(92, this.shop3, this);
   
      // reach house get point (resMap03)
-     this.houseLayer.setTileIndexCallback(61, this.house3, this);
-     this.houseLayer.setTileIndexCallback(62, this.house3, this);
+     this.houseLayer.setTileIndexCallback(63, this.house3, this);
    
      
      

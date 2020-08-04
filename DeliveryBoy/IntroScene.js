@@ -16,9 +16,7 @@ class IntroScene extends Phaser.Scene {
 
     // // music
     this.load.audio('bgmusic','assets/gameBGM.mp3')
-    this.load.audio('resBgm1',"assets/resBGM.mp3")
-    this.load.audio('resBgm2',"assets/resBGM.mp3")
-    this.load.audio('resBgm3',"assets/resBGM.mp3")
+    this.load.audio('resBgm',"assets/resBGM.mp3")
     this.load.audio('collectSound','assets/collectSound.mp3')
     this.load.audio('failSound','assets/failSound.mp3')
 
