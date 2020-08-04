@@ -7,6 +7,26 @@ class IntroScene extends Phaser.Scene {
 
     preload() {
         this.load.image('story','assets/introscene.png');
+        
+    // player animations
+    this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+    // enemy animations
+    this.load.atlas('dog','assets/dog.png','assets/dog.json');
+    this.load.spritesheet('obstacle','assets/obstacle.png',{frameWidth: 106, frameHeight: 128});
+
+    // // music
+    this.load.audio('bgmusic','assets/gameBGM.mp3')
+    this.load.audio('resBgm1',"assets/resBGM.mp3")
+    this.load.audio('resBgm2',"assets/resBGM.mp3")
+    this.load.audio('resBgm3',"assets/resBGM.mp3")
+    this.load.audio('collectSound','assets/collectSound.mp3')
+    this.load.audio('failSound','assets/failSound.mp3')
+
+    // collected items
+    this.load.image('chicken', 'assets/chicken.png');
+    this.load.image('burger', 'assets/burger.png');
+    this.load.image('pizza', 'assets/pizza.png');
+    
     }
 
     create () {

@@ -8,11 +8,11 @@ class shop2Scene extends Phaser.Scene {
  preload () {
     var map =  this.load.tilemapTiledJSON('map3', 'assets/resMap02.json');
     this.load.spritesheet('resMap02', 'assets/resMap02.png', {frameWidth: 32, frameHeight: 32});
-    this.load.image('burger', 'assets/burger.png');
+    // this.load.image('burger', 'assets/burger.png');
 
-    // music
-    this.load.audio('resBgm',"assets/resBGM.mp3")
-    this.load.audio('collectSound','assets/collectSound.mp3')
+    // // music
+    // this.load.audio('resBgm2',"assets/resBGM.mp3")
+    // this.load.audio('collectSound','assets/collectSound.mp3')
 
 } 
 
@@ -39,7 +39,7 @@ class shop2Scene extends Phaser.Scene {
 
     // music
     this.collectSoundSnd = this.sound.add('collectSound');
-    this.resBgmSnd = this.sound.add('resBgm');
+    this.resBgmSnd = this.sound.add('resBgm2');
     this.resBgmSnd.play();
     this.resBgmSnd.loop = true;
    

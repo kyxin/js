@@ -17,21 +17,21 @@ class Level1 extends Phaser.Scene {
     this.load.spritesheet('tiles', 'assets/tileset32x32-20.png', {frameWidth: 32, frameHeight: 32});
 
 
-    // player animations
-    this.load.atlas('player', 'assets/player.png', 'assets/player.json');
-    // enemy animations
-    this.load.atlas('dog','assets/dog.png','assets/dog.json');
-    this.load.spritesheet('obstacle','assets/obstacle.png',{frameWidth: 106, frameHeight: 128});
+    // // player animations
+    // this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+    // // enemy animations
+    // this.load.atlas('dog','assets/dog.png','assets/dog.json');
+    // this.load.spritesheet('obstacle','assets/obstacle.png',{frameWidth: 106, frameHeight: 128});
 
-    // // music
-    this.load.audio('bgmusic','assets/gameBGM.mp3')
-    this.load.audio('collectSound','assets/collectSound.mp3')
-    this.load.audio('failSound','assets/failSound.mp3')
+    // // // music
+    // this.load.audio('bgmusic','assets/gameBGM.mp3')
+    // this.load.audio('collectSound','assets/collectSound.mp3')
+    // this.load.audio('failSound','assets/failSound.mp3')
 
-    // collected items
-    this.load.image('chicken', 'assets/chicken.png');
-    this.load.image('burger', 'assets/burger.png');
-    this.load.image('pizza', 'assets/pizza.png');
+    // // collected items
+    // this.load.image('chicken', 'assets/chicken.png');
+    // this.load.image('burger', 'assets/burger.png');
+    // this.load.image('pizza', 'assets/pizza.png');
     
 } 
 
@@ -187,11 +187,8 @@ class Level1 extends Phaser.Scene {
     
 
     // reach house get point (resMap01)
-    // this.houseLayer.setTileIndexCallback(50, this.house1, this);
-    // this.houseLayer.setTileIndexCallback(51, this.house1, this);
-    // this.houseLayer.setTileIndexCallback(52, this.house1, this);
-    // this.houseLayer.setTileIndexCallback(58, this.house1, this);
-    // this.houseLayer.setTileIndexCallback(59, this.house1, this);
+    this.houseLayer.setTileIndexCallback(58, this.house1, this);
+    this.houseLayer.setTileIndexCallback(59, this.house1, this);
     this.houseLayer.setTileIndexCallback(60, this.house1, this);
 
      // jump into small map (resMap02)
@@ -200,10 +197,8 @@ class Level1 extends Phaser.Scene {
      this.shopLayer.setTileIndexCallback(68, this.shop2, this);
      
      // reach house get point (resMap02)
-     this.houseLayer.setTileIndexCallback(37, this.house2, this);
-    //  this.houseLayer.setTileIndexCallback(38, this.house2, this);
-    //  this.houseLayer.setTileIndexCallback(45, this.house2, this);
-    //  this.houseLayer.setTileIndexCallback(46, this.house2, this);
+     this.houseLayer.setTileIndexCallback(45, this.house2, this);
+     this.houseLayer.setTileIndexCallback(46, this.house2, this);
 
 
      // jump into small map (resMap03)
@@ -213,9 +208,8 @@ class Level1 extends Phaser.Scene {
   
      // reach house get point (resMap03)
      this.houseLayer.setTileIndexCallback(61, this.house3, this);
-    //  this.houseLayer.setTileIndexCallback(62, this.house3, this);
-    //  this.houseLayer.setTileIndexCallback(53, this.house3, this);
-    //  this.houseLayer.setTileIndexCallback(54, this.house3, this);
+     this.houseLayer.setTileIndexCallback(62, this.house3, this);
+   
      
      
      this.physics.add.collider(this.houseLayer, this.player);
