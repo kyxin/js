@@ -25,16 +25,6 @@
     <property name="tree" type="bool" value="true"/>
    </properties>
   </tile>
-  <tile id="38">
-   <properties>
-    <property name="house2" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="39">
-   <properties>
-    <property name="house2" type="bool" value="true"/>
-   </properties>
-  </tile>
   <tile id="46">
    <properties>
     <property name="house2" type="bool" value="true"/>
@@ -43,31 +33,6 @@
   <tile id="47">
    <properties>
     <property name="house2" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="51">
-   <properties>
-    <property name="house1" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="52">
-   <properties>
-    <property name="house1" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="53">
-   <properties>
-    <property name="house1" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="54">
-   <properties>
-    <property name="house3" type="bool" value="true"/>
-   </properties>
-  </tile>
-  <tile id="55">
-   <properties>
-    <property name="house3" type="bool" value="true"/>
    </properties>
   </tile>
   <tile id="59">

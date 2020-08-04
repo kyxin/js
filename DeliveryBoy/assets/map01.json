@@ -157,24 +157,6 @@
                         }]
                 }, 
                 {
-                 "id":38,
-                 "properties":[
-                        {
-                         "name":"house2",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":39,
-                 "properties":[
-                        {
-                         "name":"house2",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
                  "id":46,
                  "properties":[
                         {
@@ -188,51 +170,6 @@
                  "properties":[
                         {
                          "name":"house2",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":51,
-                 "properties":[
-                        {
-                         "name":"house1",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":52,
-                 "properties":[
-                        {
-                         "name":"house1",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":53,
-                 "properties":[
-                        {
-                         "name":"house1",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":54,
-                 "properties":[
-                        {
-                         "name":"house3",
-                         "type":"bool",
-                         "value":true
-                        }]
-                }, 
-                {
-                 "id":55,
-                 "properties":[
-                        {
-                         "name":"house3",
                          "type":"bool",
                          "value":true
                         }]
