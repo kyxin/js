@@ -11,7 +11,8 @@ class shop1Scene extends Phaser.Scene {
     this.load.image('chicken', 'assets/chicken.png');
 
     // music
-    // this.load.audio('resBgm',"assets/resBGM.mp3")
+    this.load.audio('resBgm',"assets/resBGM.mp3")
+    this.load.audio('collectSound','assets/collectSound.mp3')
 
 } 
 
@@ -27,6 +28,7 @@ class shop1Scene extends Phaser.Scene {
 
     // collect items
     this.chicken = this.physics.add.sprite(50, 300, 'chicken').setScale(0.3);
+    window.chicken = this.chicken
 
     
     // set collider
@@ -36,10 +38,12 @@ class shop1Scene extends Phaser.Scene {
   
 
     // music
-    // this.resBgmSnd = this.sound.add('resBgm');
-    // this.resBgmSnd.play();
-    // this.resBgmSnd.loop = true;
-    // this.failSoundSnd = this.sound.add('failSound');
+    this.collectSoundSnd = this.sound.add('collectSound');
+    this.resBgmSnd = this.sound.add('resBgm');
+    this.resBgmSnd.play();
+    this.resBgmSnd.loop = true;
+   
+    
 
 
    
@@ -56,7 +60,7 @@ class shop1Scene extends Phaser.Scene {
      this.physics.world.bounds.height = this.groundLayer.height;
 
      // collect action
-    this.physics.add.overlap(this.player, this.chicken,this.holdchicken, null, this );
+    this.physics.add.overlap( this.chicken,this.player,this.holdChicken, null, this );
 
 
 
@@ -175,12 +179,24 @@ class shop1Scene extends Phaser.Scene {
         console.log('exit shop 1');
         //this.cameras.main.shake(500);
         this.time.delayedCall(1000,function() {
-            // this.resBgmSnd.loop = false; 
+           if(this.holdChicken == 1){
+            
             var player = {
                 x:688,
-                y:895
+                y:895,
+                chicken:1,
             }
-            // this.resBgmSnd.stop(); 
+
+           } else {
+            var player = {
+                x:688,
+                y:895,
+                chicken:0,
+            }
+
+           }
+           this.resBgmSnd.stop(); 
+           this.resBgmSnd.loop = false;
             this.scene.start("Level1", { player : player });
         },[], this);
     }
@@ -191,7 +207,8 @@ class shop1Scene extends Phaser.Scene {
             console.log('Collect chicken');
             this.chicken.x = this.player.x+32
             this.chicken.y = this.player.y
-            this.holdchicken=1
+            this.collectSoundSnd.play();
+            this.holdChicken=1 
             return false;
         }
     

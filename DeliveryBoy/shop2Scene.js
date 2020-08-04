@@ -11,7 +11,8 @@ class shop2Scene extends Phaser.Scene {
     this.load.image('burger', 'assets/burger.png');
 
     // music
-    // this.load.audio('resBgm',"assets/resBGM.mp3")
+    this.load.audio('resBgm',"assets/resBGM.mp3")
+    this.load.audio('collectSound','assets/collectSound.mp3')
 
 } 
 
@@ -37,10 +38,11 @@ class shop2Scene extends Phaser.Scene {
   
 
     // music
-    // this.resBgmSnd = this.sound.add('resBgm');
-    // this.resBgmSnd.play();
-    // this.resBgmSnd.loop = true;
-    // this.failSoundSnd = this.sound.add('failSound');
+    this.collectSoundSnd = this.sound.add('collectSound');
+    this.resBgmSnd = this.sound.add('resBgm');
+    this.resBgmSnd.play();
+    this.resBgmSnd.loop = true;
+   
 
 
    
@@ -56,6 +58,8 @@ class shop2Scene extends Phaser.Scene {
      this.physics.world.bounds.width = this.groundLayer.width;
      this.physics.world.bounds.height = this.groundLayer.height;
 
+      // collect action
+    this.physics.add.overlap( this.burger,this.player,this.holdBurger, null, this );
     
     this.anims.create({
         key:'run',
@@ -169,17 +173,36 @@ class shop2Scene extends Phaser.Scene {
         console.log('exit shop 2');
         //this.cameras.main.shake(500);
         this.time.delayedCall(1000,function() {
-            // this.resBgmSnd.loop = false; 
+            
+            if(this.holdBurger == 1){
             var player = {
                 x:809,
-                y:607
+                y:607,
+                burger:1,
             }
-            // this.resBgmSnd.stop(); 
+        } else {
+            var player = {
+                x:809,
+                y:607,
+                burger:0,
+            }
+        }
+            this.resBgmSnd.stop(); 
+            this.resBgmSnd.loop = false; 
             this.scene.start("Level1", { player : player });
         },[], this);
     }
         } 
         // end of update 
+
+        holdBurger(player,burger) {
+            console.log('Collect burger');
+            this.burger.x = this.player.x-32
+            this.burger.y = this.player.y
+            this.collectSoundSnd.play();
+            this.holdBurger=1
+            return false;
+        }
 
         }
         // end of the scene
