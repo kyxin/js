@@ -200,7 +200,7 @@ class shop3Scene extends Phaser.Scene {
             console.log('Collect pizza');
             this.pizza.x = this.player.x+32
             this.pizza.y = this.player.y
-            this.collectSoundSnd.play();
+            // this.collectSoundSnd.play();
             this.holdPizza=1
             return false;
         }

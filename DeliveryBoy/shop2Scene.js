@@ -199,7 +199,7 @@ class shop2Scene extends Phaser.Scene {
             console.log('Collect burger');
             this.burger.x = this.player.x-32
             this.burger.y = this.player.y
-            this.collectSoundSnd.play();
+            // this.collectSoundSnd.play();
             this.holdBurger=1
             return false;
         }

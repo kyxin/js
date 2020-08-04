@@ -159,7 +159,7 @@ class Level1 extends Phaser.Scene {
     this.dog2 = this.physics.add.sprite(480,220, 'dog').setScale(0.2).play('dogAnim');
     this.obstacle1 = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.2);
     this.obstacle2 = this.physics.add.sprite(750, 700, 'obstacle').setScale(0.2);
-    this.obstacle3 = this.physics.add.sprite(700, 220, 'obstacle').setScale(0.2);
+    this.obstacle3 = this.physics.add.sprite(700, 250, 'obstacle').setScale(0.2);
   
     // this.player.setBounce(0.5);
     this.player.setCollideWorldBounds(true);
@@ -387,13 +387,13 @@ if(this.food3 == 1){
             duration: 2000,
             tweens: [
             {
-                y: 220,
+                y: 250,
             },
             {
-                y: 320,
+                y: 340,
             },
             {
-                y: 220,
+                y: 250,
             },
         ]
         }); 

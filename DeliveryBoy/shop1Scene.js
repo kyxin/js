@@ -207,7 +207,7 @@ class shop1Scene extends Phaser.Scene {
             console.log('Collect chicken');
             this.chicken.x = this.player.x+32
             this.chicken.y = this.player.y
-            this.collectSoundSnd.play();
+            // this.collectSoundSnd.play();
             this.holdChicken=1 
             return false;
         }
