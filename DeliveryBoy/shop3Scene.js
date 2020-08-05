@@ -11,8 +11,8 @@ class shop3Scene extends Phaser.Scene {
     // this.load.image('pizza', 'assets/pizza.png');
 
     // // music
-    this.load.audio('resBgm3',"assets/resBGM.mp3")
-    this.load.audio('collectSound','assets/collectSound.mp3')
+    // this.load.audio('resBgm3',"assets/resBGM.mp3")
+    // this.load.audio('collectSound','assets/collectSound.mp3')
 
 } 
 
@@ -38,6 +38,7 @@ class shop3Scene extends Phaser.Scene {
     // music
     this.collectSoundSnd = this.sound.add('collectSound');
     this.resBgmSnd = this.sound.add('resBgm');
+    window.music3 = this.resBgmSnd
     this.resBgmSnd.play();
     this.resBgmSnd.loop = true;
     
