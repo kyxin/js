@@ -15,6 +15,9 @@ class failScene extends Phaser.Scene {
         this.add.image(0, 0, 'next').setOrigin(0, 0).setScale(0.24);
         console.log("This is failScene");
 
+        // music
+        this.bgmusicSnd = this.sound.add('bgmusic');
+
         //this.input.once('pointerdown', function(){
         var spaceDown = this.input.keyboard.addKey('SPACE');
         
