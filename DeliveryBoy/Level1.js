@@ -453,7 +453,7 @@ if(this.food3 == 1){
         // hit house get point (house1)
         house1 (player,tile){
         console.log('house1',tile.index)
-        this.collectSoundSnd.play();
+        // this.collectSoundSnd.play();
         this.food1 = 0 
         this.chicken.x=-50
         this.chicken.y=-50
