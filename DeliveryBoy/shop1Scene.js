@@ -11,8 +11,8 @@ class shop1Scene extends Phaser.Scene {
     // this.load.image('chicken', 'assets/chicken.png');
 
     // // music
-    // this.load.audio('resBgm1',"assets/resBGM.mp3")
-    // this.load.audio('collectSound','assets/collectSound.mp3')
+    this.load.audio('resBgm1',"assets/resBGM.mp3")
+    this.load.audio('collectSound','assets/collectSound.mp3')
 
 } 
 
@@ -39,9 +39,9 @@ class shop1Scene extends Phaser.Scene {
 
     // music
     this.collectSoundSnd = this.sound.add('collectSound');
-    // this.resBgmSnd = this.sound.add('resBgm');
-    // this.resBgmSnd.play();
-    // this.resBgmSnd.loop = true;
+    this.resBgmSnd = this.sound.add('resBgm1');
+    this.resBgmSnd.play();
+    this.resBgmSnd.loop = true;
    
     
 
@@ -195,8 +195,8 @@ class shop1Scene extends Phaser.Scene {
             }
 
            }
-        //    this.resBgmSnd.stop(); 
-        //    this.resBgmSnd.loop = false;
+           this.resBgmSnd.stop(); 
+           this.resBgmSnd.loop = false;
             this.scene.start("Level1", { player : player });
         },[], this);
     }

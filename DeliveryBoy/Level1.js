@@ -58,10 +58,20 @@ class Level1 extends Phaser.Scene {
 
     // music
     this.bgmusicSnd = this.sound.add('bgmusic');
+
+    // // res bgm
+    // this.resBgmSnd = this.sound.add('resBgm');
+    // this.resBgmSnd.loop = false;
+    // this.resBgmSnd.stop();
+
+    // main bgm 
     this.bgmusicSnd.play();
     this.bgmusicSnd.loop = true;
+
+    // sound effect
     this.failSoundSnd = this.sound.add('failSound');
     this.collectSoundSnd = this.sound.add('collectSound');
+    
 
 
     // tween
