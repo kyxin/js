@@ -67,6 +67,8 @@ class Level1 extends Phaser.Scene {
     // main bgm 
     this.bgmusicSnd.play();
     this.bgmusicSnd.loop = true;
+    this.resBgmSnd = this.sound.add('resBgm');
+    window.music1 = this.resBgmSnd
 
     // sound effect
     this.failSoundSnd = this.sound.add('failSound');

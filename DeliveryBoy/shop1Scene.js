@@ -39,10 +39,8 @@ class shop1Scene extends Phaser.Scene {
 
     // music
     this.collectSoundSnd = this.sound.add('collectSound');
-    this.resBgmSnd = this.sound.add('resBgm');
-    window.music1 = this.resBgmSnd
-    this.resBgmSnd.play();
-    this.resBgmSnd.loop = true;
+    window.music1.play();
+    // this.resBgmSnd.loop = true;
    
     
 
@@ -196,8 +194,8 @@ class shop1Scene extends Phaser.Scene {
             }
 
            }
-           this.resBgmSnd.stop(); 
-           this.resBgmSnd.loop = false;
+           window.music1.stop(); 
+        //    this.resBgmSnd.loop = false;
             this.scene.start("Level1", { player : player });
         },[], this);
     }
