@@ -3,7 +3,7 @@ class Level1 extends Phaser.Scene {
     constructor ()
     {
         super({ key: 'Level1' });
-        this.score = 0
+        
     }
 
     init(data){
@@ -11,6 +11,7 @@ class Level1 extends Phaser.Scene {
         this.food1 = data.player.chicken
         this.food2 = data.player.burger
         this.food3 = data.player.pizza
+        this.score = data.player.score
     }
 
  preload () {
@@ -61,7 +62,7 @@ class Level1 extends Phaser.Scene {
     this.bgmusicSnd = this.sound.add('bgmusic');
 
     // main bgm 
-    this.bgmusicSnd.play();
+    this.bgmusicSnd.play({volume:0.1});
     this.bgmusicSnd.loop = true;
     this.resBgmSnd = this.sound.add('resBgm');
     window.music1 = this.resBgmSnd
@@ -69,6 +70,15 @@ class Level1 extends Phaser.Scene {
     // sound effect
     this.failSoundSnd = this.sound.add('failSound');
     this.collectSoundSnd = this.sound.add('collectSound');
+
+    //stars
+    this.star1 = this.add.image (30,35,'score').setScrollFactor(0).setScale(0.5);
+    this.star2 = this.add.image (80,35,'score').setScrollFactor(0).setScale(0.5);
+    this.star3 = this.add.image (130,35,'score').setScrollFactor(0).setScale(0.5);
+
+    this.star1.setVisible(false);
+    this.star2.setVisible(false);
+    this.star3.setVisible(false);
     
 
 
@@ -86,6 +96,7 @@ class Level1 extends Phaser.Scene {
      // small fix to our player images, we resize the physics body object slightly
      this.player.body.setSize(this.player.width, this.player.height);
      window.player= this.player
+    
      
       // collect items
     this.chicken = this.physics.add.sprite(-50,-50, 'chicken').setScale(0.3);
@@ -237,6 +248,22 @@ class Level1 extends Phaser.Scene {
     // end of create
     
      update() {
+
+        console.log(' *** score ' , window.score )
+
+        if ( window.score === 1) {
+            this.star1.setVisible(true);
+    
+        } else if ( window.score === 2) {
+            this.star1.setVisible(true);
+            this.star2.setVisible(true);
+    
+        } else if ( window.score === 3) {
+            this.star1.setVisible(true);
+            this.star2.setVisible(true);
+            this.star3.setVisible(true);
+    
+        } 
     
 if(this.food1 == 1){
     this.chicken.x=this.player.x+32
@@ -258,27 +285,27 @@ if(this.food3 == 1){
 
         if (this.cursors.left.isDown)
         {
-            console.log("left");
+            // console.log("left");
             this.player.body.setVelocityX(-200);
             this.player.anims.play('run', true); // walk left
             this.player.flipX = false; // flip the sprite to the left
         }
         else if (this.cursors.right.isDown)
         {
-            console.log("right");
+            // console.log("right");
             this.player.body.setVelocityX(200);
             this.player.anims.play('run', true);
             this.player.flipX = true; // use the original sprite looking to the right
         }
         else if (this.cursors.up.isDown)
         {
-            console.log("up");
+            // console.log("up");
             this.player.body.setVelocityY(-200);
             this.player.anims.play('back', true);
         }
         else if (this.cursors.down.isDown)
         {
-            console.log("down");
+            // console.log("down");
             this.player.body.setVelocityY(200);
             this.player.anims.play('walk', true);
         }
@@ -289,7 +316,7 @@ if(this.food3 == 1){
         // console.log(this.player.x,this.player.y)
 
          // Check for reaching endPoint object
-    if ( this.player.x >= 450 && this.player.y <= 150 ) {
+    if ( this.player.x >= 450 && this.player.y <= 150 && window.score == 3 ) {
         console.log('Reached End, game over');
         //this.cameras.main.shake(500);
         this.time.delayedCall(1000,function() {
@@ -435,7 +462,7 @@ if(this.food3 == 1){
             console.log('shop: ',tile.index)
             this.bgmusicSnd.loop = false
             this.bgmusicSnd.stop();
-            this.scene.start('shop1Scene', { player : player });
+            this.scene.start('shop1Scene', { score : window.score });
         }
 
          // small map function (shop02)
@@ -443,7 +470,7 @@ if(this.food3 == 1){
             console.log('shop: ',tile.index)
             this.bgmusicSnd.loop = false
             this.bgmusicSnd.stop();
-            this.scene.start('shop2Scene', { player : player });
+            this.scene.start('shop2Scene', { score : window.score });
         }
 
         // small map function (shop03)
@@ -451,13 +478,19 @@ if(this.food3 == 1){
             console.log('shop: ',tile.index)
             this.bgmusicSnd.loop = false
             this.bgmusicSnd.stop();
-            this.scene.start('shop3Scene', { player : player });
+            this.scene.start('shop3Scene', { score : window.score });
         }
 
         // hit house get point (house1)
         house1 (player,tile){
-        console.log('house1',tile.index)
-        this.collectSoundSnd.play();
+        // console.log('house1',tile.index)
+        console.log ('score ' , window.score)
+        if (this.food1 == 1) {
+            this.collectSoundSnd.play();
+            window.score = window.score + 1
+           
+        }
+        // disable and hide food 
         this.food1 = 0 
         this.chicken.x=-50
         this.chicken.y=-50
@@ -466,7 +499,13 @@ if(this.food3 == 1){
 
          // hit house get point (house2)
         house2 (player,tile){
-        console.log('house2',tile.index)
+        // console.log('house2',tile.index)
+        console.log ('score ' , window.score)
+        if (this.food2 == 1) {
+            this.collectSoundSnd.play();
+            window.score = window.score + 1
+        }
+        // disable and hide food 
         this.food2 = 0 
         this.burger.x=-50
         this.burger.y=-50
@@ -475,7 +514,13 @@ if(this.food3 == 1){
 
         // hit house get point (house3)
         house3 (player,tile){
-            console.log('house3',tile.index)
+            // console.log('house3',tile.index)
+            console.log ('score ' , window.score)
+            if (this.food3 == 1) {
+                this.collectSoundSnd.play();
+                window.score = window.score + 1
+            }
+            // disable and hide food 
             this.food3 = 0 
         this.pizza.x=-50
         this.pizza.y=-50

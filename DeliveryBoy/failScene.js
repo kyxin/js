@@ -28,6 +28,7 @@ class failScene extends Phaser.Scene {
             y:936
         }
         this.bgmusicSnd.stop(); 
+        window.score = 0 
         // this.scene.sound.removeAll();
         this.scene.start("Level1", { player : player });
         }, this );

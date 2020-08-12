@@ -3,6 +3,11 @@ class shop1Scene extends Phaser.Scene {
     constructor ()
     {
         super({ key: 'shop1Scene' });
+        this.holdFood1 = 0
+    }
+
+    init(data){
+        this.score = data.score 
     }
 
  preload () {
@@ -35,7 +40,7 @@ class shop1Scene extends Phaser.Scene {
 
     // music
     this.collectSoundSnd = this.sound.add('collectSound');
-    window.music1.play();
+    window.music1.play({volume:0.1});
     // this.resBgmSnd.loop = true;
    
     
@@ -174,12 +179,13 @@ class shop1Scene extends Phaser.Scene {
         console.log('exit shop 1');
         //this.cameras.main.shake(500);
         this.time.delayedCall(1000,function() {
-           if(this.holdChicken == 1){
+           if(this.holdFood1 == 1){
             
             var player = {
                 x:688,
                 y:895,
                 chicken:1,
+                score : this.score 
             }
 
            } else {
@@ -187,6 +193,7 @@ class shop1Scene extends Phaser.Scene {
                 x:688,
                 y:895,
                 chicken:0,
+                score : this.score 
             }
 
            }
@@ -198,11 +205,14 @@ class shop1Scene extends Phaser.Scene {
         // end of update 
 
         holdChicken(player,chicken) {
-            console.log('Collect chicken');
+            // console.log('Collect chicken');
+            console.log ('score ' , this.score)
             this.chicken.x = this.player.x+32
             this.chicken.y = this.player.y
-            this.collectSoundSnd.play();
-            this.holdChicken=1 
+            if (this.holdFood1 == 0) {
+                this.collectSoundSnd.play();
+            }
+            this.holdFood1 = 1 
             return false;
         }
     
