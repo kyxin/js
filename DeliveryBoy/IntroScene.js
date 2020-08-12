@@ -24,6 +24,9 @@ class IntroScene extends Phaser.Scene {
     this.load.image('chicken', 'assets/chicken.png');
     this.load.image('burger', 'assets/burger.png');
     this.load.image('pizza', 'assets/pizza.png');
+
+    // score
+    this.load.image('score', 'assets/star.png');
     
     }
 

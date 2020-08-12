@@ -3,6 +3,7 @@ class Level1 extends Phaser.Scene {
     constructor ()
     {
         super({ key: 'Level1' });
+        this.score = 0
     }
 
     init(data){
@@ -59,11 +60,6 @@ class Level1 extends Phaser.Scene {
     // music
     this.bgmusicSnd = this.sound.add('bgmusic');
 
-    // // res bgm
-    // this.resBgmSnd = this.sound.add('resBgm');
-    // this.resBgmSnd.loop = false;
-    // this.resBgmSnd.stop();
-
     // main bgm 
     this.bgmusicSnd.play();
     this.bgmusicSnd.loop = true;
@@ -83,10 +79,6 @@ class Level1 extends Phaser.Scene {
     this.time.addEvent({ delay: 2000, callback: this.moveDownUp2, callbackScope: this, loop: false });
     this.time.addEvent({ delay: 1000, callback: this.moveDownUp3, callbackScope: this, loop: false });
     
-    //star and end point 
-    // var start = map.findObject("object_layer", obj => obj.name === "start");
-    // this.end = map.findObject("object_layer", obj => obj.name === "end");
-    // console.log(this.end.x,this.end.y)
     
      // create the player sprite
      this.player = this.physics.add.sprite(this.player.x, this.player.y, 'player').setScale(0.2);
@@ -169,9 +161,9 @@ class Level1 extends Phaser.Scene {
     // create the enemy sprite
     this.dog1 = this.physics.add.sprite(450, 700, 'dog').setScale(0.2).play('dogAnim');
     this.dog2 = this.physics.add.sprite(480,220, 'dog').setScale(0.2).play('dogAnim');
-    this.obstacle1 = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.2);
-    this.obstacle2 = this.physics.add.sprite(750, 700, 'obstacle').setScale(0.2);
-    this.obstacle3 = this.physics.add.sprite(700, 250, 'obstacle').setScale(0.2);
+    this.obstacle1 = this.physics.add.sprite(350, 350, 'obstacle').setScale(0.3);
+    this.obstacle2 = this.physics.add.sprite(750, 700, 'obstacle').setScale(0.3);
+    this.obstacle3 = this.physics.add.sprite(700, 250, 'obstacle').setScale(0.3);
   
     // this.player.setBounce(0.5);
     this.player.setCollideWorldBounds(true);
@@ -355,7 +347,7 @@ if(this.food3 == 1){
             targets: this.obstacle1,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 2000,
+            duration: 1000,
             tweens: [
             {
                 y: 350,
@@ -375,7 +367,7 @@ if(this.food3 == 1){
             targets: this.obstacle2,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 2000,
+            duration: 1000,
             tweens: [
             {
                 y: 700,
@@ -396,7 +388,7 @@ if(this.food3 == 1){
             targets: this.obstacle3,
             loop: -1, // loop forever
             ease: 'Linear',
-            duration: 2000,
+            duration: 1000,
             tweens: [
             {
                 y: 250,
@@ -465,7 +457,7 @@ if(this.food3 == 1){
         // hit house get point (house1)
         house1 (player,tile){
         console.log('house1',tile.index)
-        // this.collectSoundSnd.play();
+        this.collectSoundSnd.play();
         this.food1 = 0 
         this.chicken.x=-50
         this.chicken.y=-50

@@ -8,12 +8,8 @@ class shop1Scene extends Phaser.Scene {
  preload () {
     var map =  this.load.tilemapTiledJSON('map2', 'assets/resMap01.json');
     this.load.spritesheet('resMap01', 'assets/resMap01.png', {frameWidth: 32, frameHeight: 32});
-    // this.load.image('chicken', 'assets/chicken.png');
-
-    // // music
-    // this.load.audio('resBgm1',"assets/resBGM.mp3")
-    // this.load.audio('collectSound','assets/collectSound.mp3')
-
+   
+   
 } 
 
  create () {
@@ -195,7 +191,6 @@ class shop1Scene extends Phaser.Scene {
 
            }
            window.music1.stop(); 
-        //    this.resBgmSnd.loop = false;
             this.scene.start("Level1", { player : player });
         },[], this);
     }
@@ -206,7 +201,7 @@ class shop1Scene extends Phaser.Scene {
             console.log('Collect chicken');
             this.chicken.x = this.player.x+32
             this.chicken.y = this.player.y
-            // this.collectSoundSnd.play();
+            this.collectSoundSnd.play();
             this.holdChicken=1 
             return false;
         }
