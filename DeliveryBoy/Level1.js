@@ -241,7 +241,8 @@ class Level1 extends Phaser.Scene {
         // set background color, so the sky is not black
         this.cameras.main.setBackgroundColor('#ccccff');
 
-        
+        this.exitText = this.add.text(560,50,'Exit',
+        {fontSize:'24px', fill:'#7A562B'});
             
     }
 
